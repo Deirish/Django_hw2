@@ -1,10 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base/base.html' %}
 
-</body>
-</html>
+{% block title %}Articles{% endblock %}
+
+{% block content %}
+    <h1>This is article</h1>
+    {% if article %}
+        {% if article|divisibleby:'2' %}
+            <p>This article number is even!!!</p>
+        {% else %}
+            <p>This article number is odd</p>
+        {% endif %}
+    {% endif %}
+    {% if text %}
+        {% include 'includes/slug_text.html' with slug_text=text %}
+    {% endif %}
+    {% include 'includes/mainpage.html' %}
+{% endblock %}
